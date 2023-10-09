@@ -77,12 +77,11 @@ io.on("connection", (socket) => {
   });
 });
 
-httpServer.listen(8000, () =>{
-
-  console.log(`Server is running on port 8000`);
-  
-  timer.start({precision: 'seconds'});
+httpServer.listen(8080, () => {
+  console.log(`Server is running on port 8080`);
+  timer.start({ precision: 'seconds' });
 });
+
 
 function getRandomNumberInt(min: number, max: number) {
   min = Math.ceil(min);

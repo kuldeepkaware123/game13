@@ -1,11 +1,12 @@
 import { LinearProgress } from "@mui/material";
-import anime from "animejs";
 import React from "react";
+import anime from "animejs";
+
 import { useEffect } from "react";
 import { GameStages } from "./Global";
 
-const ProgressBarRound = ( props : {stage : GameStages, maxDuration: number, currentDuration: number}) : JSX.Element => {
- 
+const ProgressBarRound = (props: { stage: GameStages, maxDuration: number, currentDuration: number }): JSX.Element => {
+  useEffect(() => {
   useEffect(() => {
     console.log("stage : " + props.stage)
     console.log("maxDuration : " + props.maxDuration)
@@ -21,16 +22,18 @@ const ProgressBarRound = ( props : {stage : GameStages, maxDuration: number, cur
     })
     
   }, [props.stage, props.maxDuration, props.currentDuration]);
+  }, [props.stage, props.maxDuration, props.currentDuration]);
+
   return (
-    <div>
+    <div className="progressRound">
       <div className="progressRoundTitle">
-      {
-        (props.stage === GameStages.PLACE_BET) ? "PLACE BET" 
-        : (props.stage === GameStages.WINNERS)  ? " WINNERS"
-        : "NO MORE BETS"
-      }
+        {
+          (props.stage === GameStages.PLACE_BET) ? "PLACE BET"
+            : (props.stage === GameStages.WINNERS) ? "WINNERS"
+              : "NO MORE BETS"
+        }
       </div>
-      <progress className={"linearProgressRounds"} value="0" max="100" />
+      <LinearProgress className="linearProgressRounds" value={0} />
     </div>
   );
 };

@@ -113,7 +113,6 @@ body {
   will-change: transform;
 }
 
-
 .roulette-board {
   float: none;
   display: flow-root;
@@ -148,9 +147,7 @@ body {
   border-collapse: collapse;*/
 }
 
-
-
- ul {
+ul {
   margin: 0;
   padding: 0;
   display: flex;
@@ -161,14 +158,14 @@ body {
   transform: translate(-50%, -50%);
 }
 
- ul li.board-chip {
+ul li.board-chip {
   list-style: none;
   margin: 0 15px;
   display: block;
 }
 
 ul li.board-chip div {
-  position: relative; 
+  position: relative;
   display: block;
   width: 60px;
   height: 60px;
@@ -178,16 +175,15 @@ ul li.board-chip div {
   border-radius: 50%;
   font-size: 18px;
   color: #ffff;
-  transition: .5s;
-  
+  transition: 0.5s;
 }
 
 ul li div::before {
-  content: '';
+  content: "";
 }
 
 ul li.board-chip div::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -195,12 +191,12 @@ ul li.board-chip div::before {
   height: 100%;
   border-radius: 50%;
   background: #ffee10;
-  transition: .5s;
-  transform: scale(.9);
+  transition: 0.5s;
+  transform: scale(0.9);
   z-index: -1;
 }
 
- ul li.board-chip div:hover::before {
+ul li.board-chip div:hover::before {
   transform: scale(1.1);
   box-shadow: 0 0 15px #ffee10;
 }
@@ -210,45 +206,45 @@ ul li.board-chip div:hover {
   box-shadow: 0 0 5px #ffee10;
   text-shadow: 0 0 5px #ffee10;
 }
- ul li.board-chip div.chip_selected {
+ul li.board-chip div.chip_selected {
   color: #ffee10;
   box-shadow: 0 0 20px #ffee10;
   text-shadow: 0 0 5px #ffee10;
 }
 ul li.board-chip div.chip-100 {
-  background:url('assets/chip_black.png') no-repeat;
+  background: url("assets/chip_black.png") no-repeat;
   background-size: 60px 60px;
 }
 ul li.board-chip div.chip-20 {
-  background:url('assets/chip_blue.png') no-repeat;
+  background: url("assets/chip_blue.png") no-repeat;
   background-size: 60px 60px;
 }
 ul li.board-chip div.chip-10 {
-  background:url('assets/chip_orange.png') no-repeat;
+  background: url("assets/chip_orange.png") no-repeat;
   background-size: 60px 60px;
 }
 ul li.board-chip div.chip-5 {
-  background:url('assets/chip_purple.png') no-repeat;
+  background: url("assets/chip_purple.png") no-repeat;
   background-size: 60px 60px;
 }
 
 div.chip-100-placed {
-  background:url('assets/chip_black.png') no-repeat;
+  background: url("assets/chip_black.png") no-repeat;
   background-size: 30px 30px;
 }
 div.chip-20-placed {
-  background:url('assets/chip_blue.png') no-repeat;
+  background: url("assets/chip_blue.png") no-repeat;
   background-size: 30px 30px;
 }
 div.chip-10-placed {
-  background:url('assets/chip_orange.png') no-repeat;
+  background: url("assets/chip_orange.png") no-repeat;
   background-size: 30px 30px;
 }
 div.chip-5-placed {
-  background:url('assets/chip_purple.png') no-repeat;
+  background: url("assets/chip_purple.png") no-repeat;
   background-size: 30px 30px;
 }
-.roulette-actions{
+.roulette-actions {
   display: block;
   position: relative;
   height: 150px;
@@ -256,61 +252,62 @@ div.chip-5-placed {
 .chipValue {
   position: relative;
 }
-.chipValueImage { 
+.chipValueImage {
   position: absolute;
-  width:30px;
-  height:30px;
+  width: 30px;
+  height: 30px;
 }
 .chipSum {
-  position:absolute;
+  position: absolute;
   font-weight: 900;
-  font-size:20px;
+  font-size: 20px;
   -webkit-text-stroke: 1px blue;
   -webkit-text-fill-color: white;
-  z-index:10;
+  z-index: 10;
 }
-.auth-user { 
+.auth-user {
   width: 250px;
   margin: 300px auto;
 }
-.progressBar { 
-  width:400px;
+.progressBar {
+  width: 400px;
   margin: 0 auto;
 }
-.linearProgressRounds { 
-  width:400px;
-  height:40px;
+.linearProgressRounds {
+  width: 400px;
+  height: 40px;
 }
 .progressRoundTitle {
-  text-align:center;
-  margin:0 auto;
-  margin-top:20px;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 20px;
   font-size: 24px;
-    font-weight: 900;
-    color: #fff;
+  font-weight: 900;
+  color: #fff;
 }
-.winnerItem { 
+.winnerItem {
   font-size: 24px;
   font-weight: 600;
-  margin-top:20px;
+  margin-top: 20px;
   color: #f5f5dc;
 }
-.winnerItemHeader { 
+.winnerItemHeader {
   text-align: center;
   font-size: 24px;
   font-weight: 600;
-  margin-top:20px;
+  margin-top: 20px;
   color: #f5f5dc;
 }
 .rouletteWheelWrapper {
   margin: 0 auto;
+  width: 90%;
 }
-.winnerHistory { 
-  vertical-align:top;
+.winnerHistory {
+  vertical-align: top;
   width: 400px;
 }
-.winnersBoard { 
-  vertical-align:top;
+.winnersBoard {
+  vertical-align: top;
   width: 400px;
 }
 
@@ -327,20 +324,49 @@ div.chip-5-placed {
   background-color: rgb(41, 40, 40);
 }
 .winnerHistory {
-
 }
 .winnerHistory div {
-  float:left; 
-  color:#fff;
+  float: left;
+  color: #fff;
   font-weight: 900;
-  line-height: 40px;;
-  margin-left:20px;
-  margin-top:10px;
+  line-height: 40px;
+  margin-left: 20px;
+  margin-top: 10px;
   width: 40px;
   height: 40px;
   margin-bottom: 10px;
 }
 
 .hideElementsTest {
- /* visibility: hidden;*/
+  /* visibility: hidden;*/
+}
+
+.topbar td button,
+.topbar div button {
+  margin: 0px 10px;
+  height: 3em;
+  width: 10em;
+  border-radius: 1em;
+
+  font-size: 1em;
+  font-weight: bold;
+  color: #333;
+
+  /* padding defines the width of the red gradient background (2) */
+  padding: 0.25em;
+
+  /* border-width defines the width the blue gradient background (3) */
+  border: 0.25em solid transparent;
+
+  background: 
+    /* (1) most inner gradient */ linear-gradient(
+        to bottom,
+        #fff,
+        #bbb
+      )
+      content-box,
+    /* (2) red gradient */ linear-gradient(to right, #e94332, #a91302)
+      padding-box,
+    /* (3) blue gradient */ linear-gradient(to right, #0867a6, #4aa9e8)
+      border-box;
 }
