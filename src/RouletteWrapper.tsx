@@ -5,7 +5,6 @@ import { Col, Progress } from "@mantine/core";
 import Swal from "sweetalert2";
 
 const RouletteWrapper = () => {
-  // Dummy data for the UI
   const dummyData = {
     rouletteData: {
       numbers: [
@@ -14,16 +13,16 @@ const RouletteWrapper = () => {
       ],
     },
     number: {
-      next: 15, // You can change this to any number you want to display
+      next: 25,
     },
     winners: [
       { username: "User1", sum: 100 },
       { username: "User2", sum: 50 },
       { username: "User3", sum: 75 },
     ],
-    history: [19, 19, 19], // Example history data
-    stage: "WINNERS", // Example stage
-    time_remaining: 10, // Example time remaining
+    history: [19, 20, 21],
+    stage: "WINNERS",
+    time_remaining: 10,
   };
 
   return (
@@ -115,25 +114,6 @@ const RouletteWrapper = () => {
                 </button>
               </div>
             </td>
-            {/* <td>
-              <div className={"winnerHistory hideElementsTest"}>
-                {dummyData.history &&
-                  dummyData.history.map((entry, index) => (
-                    <div
-                      key={index}
-                      className={
-                        entry === 0
-                          ? "green"
-                          : dummyData.rouletteData.numbers.includes(entry)
-                          ? "black"
-                          : "red"
-                      }
-                    >
-                      {entry}
-                    </div>
-                  ))}
-              </div>
-            </td> */}
           </tr>
         </table>
         <Board

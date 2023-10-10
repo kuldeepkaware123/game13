@@ -15,7 +15,6 @@ class Board extends React.Component {
   other_black = { type: "BLACK" };
   totalNumbers = 37;
   rouletteWheenNumbers = [];
-
   constructor(props) {
     super(props);
     this.onCellClick = this.onCellClick.bind(this);
@@ -230,369 +229,296 @@ class Board extends React.Component {
     );
 
     return (
-      // <div className="roulette-board-wrapper hideElementsTest">
-      //   <div className="roulette-board">
-      //     <div className="roulette-board-grid-numbers">
-      //       <table>
-      //         <tbody>
-      //           {this.numbers.map((item, index) => {
-      //             console.log(this.numbers);
-      //             var keyId = 0;
-      //             return (
-      //               <tr key={"tr_board_" + index}>
-      //                 {item.map((cell, cellIndex) => {
-      //                   var cellClass = this.getClassNamesFromCellItemType(
-      //                     cell.type,
-      //                     cell.value
-      //                   );
-      //                   if (cell.type === "NUMBER" && cell.value === 0) {
-      //                     var tdKey = "td_" + cell.type + "_" + cell.value;
-      //                     var chipKey = "chip_" + cell.type + "_" + cell.value;
-
-      //                     var currentItemChips =
-      //                       this.props.chipsData.placedChips.get(cell);
-      //                     return (
-      //                       <ChipComponent
-      //                         currentItemChips={currentItemChips}
-      //                         tdKey={tdKey}
-      //                         chipKey={chipKey}
-      //                         cell={cell}
-      //                         cellClass={cellClass}
-      //                         rowSpan={5}
-      //                         colSpan={1}
-      //                         onCellClick={this.onCellClick}
-      //                         leftMin={undefined}
-      //                         leftMax={undefined}
-      //                         topMin={undefined}
-      //                         topMax={undefined}
-      //                       />
-      //                     );
-      //                   } else {
-      //                     var chipKeyValue = cell.value + "";
-      //                     if (cell.value === undefined) {
-      //                       var split = cell.valueSplit + "";
-      //                       chipKeyValue = "split_" + split;
-      //                     }
-      //                     var tdKey = "td_" + cell.type + "_" + chipKeyValue;
-      //                     var chipKey =
-      //                       "chip_" + cell.type + "_" + chipKeyValue;
-
-      //                     if (cell.type === "EMPTY") {
-      //                       keyId++;
-      //                       return (
-      //                         <td
-      //                           key={"empty_" + keyId}
-      //                           className={cellClass}
-      //                         ></td>
-      //                       );
-      //                     } else {
-      //                       var currentItemChips =
-      //                         this.props.chipsData.placedChips.get(cell);
-
-      //                       return (
-      //                         <ChipComponent
-      //                           currentItemChips={currentItemChips}
-      //                           tdKey={tdKey}
-      //                           chipKey={chipKey}
-      //                           cell={cell}
-      //                           rowSpan={1}
-      //                           colSpan={1}
-      //                           cellClass={cellClass}
-      //                           onCellClick={this.onCellClick}
-      //                           leftMin={undefined}
-      //                           leftMax={undefined}
-      //                           topMin={undefined}
-      //                           topMax={undefined}
-      //                         />
-      //                       );
-      //                     }
-      //                   }
-      //                 })}
-      //               </tr>
-      //             );
-      //           })}
-      //         </tbody>
-      //       </table>
-      //     </div>
-      //     <div className="roulette-board-grid-other">
-      //       <table>
-      //         <tbody>
-      //           <tr>
-      //             <td colSpan={2}></td>
-      //             <ChipComponent
-      //               currentItemChips={currentItemChips_1_12}
-      //               tdKey={"td_other_1_12"}
-      //               chipKey={"chip_other_1_12"}
-      //               cell={this.other_1_12}
-      //               rowSpan={1}
-      //               colSpan={7}
-      //               cellClass={this.getClassNamesFromCellItemType(
-      //                 "NUMBERS_1_12",
-      //                 null
-      //               )}
-      //               leftMin={70}
-      //               leftMax={140}
-      //               onCellClick={this.onCellClick}
-      //               topMin={undefined}
-      //               topMax={undefined}
-      //             />
-      //             <td></td>
-      //             <ChipComponent
-      //               currentItemChips={currentItemChips_2_12}
-      //               tdKey={"td_other_2_12"}
-      //               chipKey={"chip_other_2_12"}
-      //               cell={this.other_2_12}
-      //               rowSpan={1}
-      //               colSpan={7}
-      //               leftMin={70}
-      //               leftMax={140}
-      //               cellClass={this.getClassNamesFromCellItemType(
-      //                 "NUMBERS_2_12",
-      //                 null
-      //               )}
-      //               onCellClick={this.onCellClick}
-      //               topMin={undefined}
-      //               topMax={undefined}
-      //             />
-      //             <td></td>
-      //             <ChipComponent
-      //               currentItemChips={currentItemChips_3_12}
-      //               tdKey={"td_other_3_12"}
-      //               chipKey={"chip_other_3_12"}
-      //               cell={this.other_3_12}
-      //               rowSpan={1}
-      //               colSpan={7}
-      //               leftMin={70}
-      //               leftMax={140}
-      //               cellClass={this.getClassNamesFromCellItemType(
-      //                 "NUMBERS_3_12",
-      //                 null
-      //               )}
-      //               onCellClick={this.onCellClick}
-      //               topMin={undefined}
-      //               topMax={undefined}
-      //             />
-      //           </tr>
-      //           <tr>
-      //             <td colSpan={2}></td>
-      //             <ChipComponent
-      //               currentItemChips={currentItemChips_1_18}
-      //               tdKey={"td_other_1_18"}
-      //               chipKey={"chip_other_1_18"}
-      //               cell={this.other_1_18}
-      //               rowSpan={1}
-      //               colSpan={3}
-      //               leftMin={30}
-      //               leftMax={60}
-      //               cellClass={this.getClassNamesFromCellItemType(
-      //                 "NUMBERS_1_18",
-      //                 null
-      //               )}
-      //               onCellClick={this.onCellClick}
-      //               topMin={undefined}
-      //               topMax={undefined}
-      //             />
-      //             <td></td>
-      //             <ChipComponent
-      //               currentItemChips={currentItemChips_even}
-      //               tdKey={"td_other_even"}
-      //               chipKey={"chip_other_even"}
-      //               cell={this.other_even}
-      //               rowSpan={1}
-      //               colSpan={3}
-      //               leftMin={30}
-      //               leftMax={60}
-      //               cellClass={this.getClassNamesFromCellItemType("EVEN", null)}
-      //               onCellClick={this.onCellClick}
-      //               topMin={undefined}
-      //               topMax={undefined}
-      //             />
-      //             <td></td>
-      //             <ChipComponent
-      //               currentItemChips={currentItemChips_red}
-      //               tdKey={"td_other_red"}
-      //               chipKey={"chip_other_red"}
-      //               cell={this.other_red}
-      //               rowSpan={1}
-      //               colSpan={3}
-      //               leftMin={30}
-      //               leftMax={60}
-      //               cellClass={this.getClassNamesFromCellItemType("RED", null)}
-      //               onCellClick={this.onCellClick}
-      //               topMin={undefined}
-      //               topMax={undefined}
-      //             />
-      //             <td></td>
-      //             <ChipComponent
-      //               currentItemChips={currentItemChips_black}
-      //               tdKey={"td_other_black"}
-      //               chipKey={"chip_other_black"}
-      //               cell={this.other_black}
-      //               rowSpan={1}
-      //               colSpan={3}
-      //               leftMin={30}
-      //               leftMax={60}
-      //               cellClass={this.getClassNamesFromCellItemType(
-      //                 "BLACK",
-      //                 null
-      //               )}
-      //               onCellClick={this.onCellClick}
-      //               topMin={undefined}
-      //               topMax={undefined}
-      //             />
-      //             <td></td>
-      //             <ChipComponent
-      //               currentItemChips={currentItemChips_odd}
-      //               tdKey={"td_other_odd"}
-      //               chipKey={"chip_other_odd"}
-      //               cell={this.other_odd}
-      //               rowSpan={1}
-      //               colSpan={3}
-      //               leftMin={30}
-      //               leftMax={60}
-      //               cellClass={this.getClassNamesFromCellItemType("ODD", null)}
-      //               onCellClick={this.onCellClick}
-      //               topMin={undefined}
-      //               topMax={undefined}
-      //             />
-      //             <td></td>
-      //             <ChipComponent
-      //               currentItemChips={currentItemChips_19_36}
-      //               tdKey={"td_other_19_36"}
-      //               chipKey={"chip_other_19_36"}
-      //               cell={this.other_19_36}
-      //               rowSpan={1}
-      //               colSpan={3}
-      //               leftMin={30}
-      //               leftMax={60}
-      //               cellClass={this.getClassNamesFromCellItemType(
-      //                 "NUMBERS_19_36",
-      //                 null
-      //               )}
-      //               onCellClick={this.onCellClick}
-      //               topMin={undefined}
-      //               topMax={undefined}
-      //             />
-      //           </tr>
-      //           <tr>
-      //             <td></td>
-      //             <td></td>
-      //             <td></td>
-      //             <td></td>
-      //             <td></td>
-      //             <td></td>
-      //             <td></td>
-      //             <td></td>
-      //             <td></td>
-      //             <td></td>
-      //             <td></td>
-      //             <td></td>
-      //             <td></td>
-      //             <td></td>
-      //             <td></td>
-      //             <td></td>
-      //             <td></td>
-      //             <td></td>
-      //             <td></td>
-      //             <td></td>
-      //             <td></td>
-      //             <td></td>
-      //             <td></td>
-      //             <td></td>
-      //             <td></td>
-      //             <td></td>
-      //             <td></td>
-      //           </tr>
-      //         </tbody>
-      //       </table>
-      //     </div>
-      //   </div>
-      // </div>
-      <div className="roulette-board-wrapper hideElementsTest">
-        <div className="roulette-board">
-          <div className="roulette-board-grid-numbers">
-            <table>
-              <tbody>
-                {this.numbers.map((item, index) => {
-                  var keyId = 0;
-                  return (
-                    <tr key={"tr_board_" + index}>
-                      {item.map((cell, cellIndex) => {
-                        var cellClass = this.getClassNamesFromCellItemType(
-                          cell.type,
-                          cell.value
-                        );
-                        if (cell.type === "NUMBER" && cell.value === 0) {
-                          var tdKey = "td_" + cell.type + "_" + cell.value;
-                          var chipKey = "chip_" + cell.type + "_" + cell.value;
-
-                          var currentItemChips =
-                            this.props.chipsData.placedChips.get(cell);
-                          return (
-                            <ChipComponent
-                              currentItemChips={currentItemChips}
-                              tdKey={tdKey}
-                              chipKey={chipKey}
-                              cell={cell}
-                              cellClass={cellClass}
-                              rowSpan={5}
-                              colSpan={1}
-                              onCellClick={() => this.onCellClick(cell)}
-                              leftMin={undefined}
-                              leftMax={undefined}
-                              topMin={undefined}
-                              topMax={undefined}
-                            />
+      <>
+        <div className="roulette-board-wrapper hideElementsTest">
+          <div className="roulette-board">
+            <div className="roulette-board-grid-numbers">
+              <table>
+                <tbody>
+                  {this.numbers.map((item, index) => {
+                    console.log(this.numbers);
+                    var keyId = 0;
+                    return (
+                      <tr key={"tr_board_" + index}>
+                        {item.map((cell, cellIndex) => {
+                          var cellClass = this.getClassNamesFromCellItemType(
+                            cell.type,
+                            cell.value
                           );
-                        } else {
-                          var chipKeyValue = cell.value + "";
-                          if (cell.value === undefined) {
-                            var split = cell.valueSplit + "";
-                            chipKeyValue = "split_" + split;
-                          }
-                          var tdKey = "td_" + cell.type + "_" + chipKeyValue;
-                          var chipKey =
-                            "chip_" + cell.type + "_" + chipKeyValue;
+                          if (cell.type === "NUMBER" && cell.value === 0) {
+                            var tdKey = "td_" + cell.type + "_" + cell.value;
+                            var chipKey =
+                              "chip_" + cell.type + "_" + cell.value;
 
-                          if (cell.type === "EMPTY") {
-                            keyId++;
-                            return (
-                              <td
-                                key={"empty_" + keyId}
-                                className={cellClass}
-                              ></td>
-                            );
-                          } else {
                             var currentItemChips =
                               this.props.chipsData.placedChips.get(cell);
-
                             return (
                               <ChipComponent
                                 currentItemChips={currentItemChips}
                                 tdKey={tdKey}
                                 chipKey={chipKey}
                                 cell={cell}
-                                rowSpan={1}
-                                colSpan={1}
                                 cellClass={cellClass}
-                                onCellClick={() => this.onCellClick(cell)}
+                                rowSpan={5}
+                                colSpan={1}
+                                onCellClick={this.onCellClick}
                                 leftMin={undefined}
                                 leftMax={undefined}
                                 topMin={undefined}
                                 topMax={undefined}
                               />
                             );
+                          } else {
+                            var chipKeyValue = cell.value + "";
+                            if (cell.value === undefined) {
+                              var split = cell.valueSplit + "";
+                              chipKeyValue = "split_" + split;
+                            }
+                            var tdKey = "td_" + cell.type + "_" + chipKeyValue;
+                            var chipKey =
+                              "chip_" + cell.type + "_" + chipKeyValue;
+
+                            if (cell.type === "EMPTY") {
+                              keyId++;
+                              return (
+                                <td
+                                  key={"empty_" + keyId}
+                                  className={cellClass}
+                                ></td>
+                              );
+                            } else {
+                              var currentItemChips =
+                                this.props.chipsData.placedChips.get(cell);
+
+                              return (
+                                <ChipComponent
+                                  currentItemChips={currentItemChips}
+                                  tdKey={tdKey}
+                                  chipKey={chipKey}
+                                  cell={cell}
+                                  rowSpan={1}
+                                  colSpan={1}
+                                  cellClass={cellClass}
+                                  onCellClick={this.onCellClick}
+                                  leftMin={undefined}
+                                  leftMax={undefined}
+                                  topMin={undefined}
+                                  topMax={undefined}
+                                />
+                              );
+                            }
                           }
-                        }
-                      })}
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+                        })}
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <div className="roulette-board-grid-other">
+              <table>
+                <tbody>
+                  <tr>
+                    <td colSpan={2}></td>
+                    <ChipComponent
+                      currentItemChips={currentItemChips_1_12}
+                      tdKey={"td_other_1_12"}
+                      chipKey={"chip_other_1_12"}
+                      cell={this.other_1_12}
+                      rowSpan={1}
+                      colSpan={7}
+                      cellClass={this.getClassNamesFromCellItemType(
+                        "NUMBERS_1_12",
+                        null
+                      )}
+                      leftMin={70}
+                      leftMax={140}
+                      onCellClick={this.onCellClick}
+                      topMin={undefined}
+                      topMax={undefined}
+                    />
+                    <td></td>
+                    <ChipComponent
+                      currentItemChips={currentItemChips_2_12}
+                      tdKey={"td_other_2_12"}
+                      chipKey={"chip_other_2_12"}
+                      cell={this.other_2_12}
+                      rowSpan={1}
+                      colSpan={7}
+                      leftMin={70}
+                      leftMax={140}
+                      cellClass={this.getClassNamesFromCellItemType(
+                        "NUMBERS_2_12",
+                        null
+                      )}
+                      onCellClick={this.onCellClick}
+                      topMin={undefined}
+                      topMax={undefined}
+                    />
+                    <td></td>
+                    <ChipComponent
+                      currentItemChips={currentItemChips_3_12}
+                      tdKey={"td_other_3_12"}
+                      chipKey={"chip_other_3_12"}
+                      cell={this.other_3_12}
+                      rowSpan={1}
+                      colSpan={7}
+                      leftMin={70}
+                      leftMax={140}
+                      cellClass={this.getClassNamesFromCellItemType(
+                        "NUMBERS_3_12",
+                        null
+                      )}
+                      onCellClick={this.onCellClick}
+                      topMin={undefined}
+                      topMax={undefined}
+                    />
+                  </tr>
+                  <tr>
+                    <td colSpan={2}></td>
+                    <ChipComponent
+                      currentItemChips={currentItemChips_1_18}
+                      tdKey={"td_other_1_18"}
+                      chipKey={"chip_other_1_18"}
+                      cell={this.other_1_18}
+                      rowSpan={1}
+                      colSpan={3}
+                      leftMin={30}
+                      leftMax={60}
+                      cellClass={this.getClassNamesFromCellItemType(
+                        "NUMBERS_1_18",
+                        null
+                      )}
+                      onCellClick={this.onCellClick}
+                      topMin={undefined}
+                      topMax={undefined}
+                    />
+                    <td></td>
+                    <ChipComponent
+                      currentItemChips={currentItemChips_even}
+                      tdKey={"td_other_even"}
+                      chipKey={"chip_other_even"}
+                      cell={this.other_even}
+                      rowSpan={1}
+                      colSpan={3}
+                      leftMin={30}
+                      leftMax={60}
+                      cellClass={this.getClassNamesFromCellItemType(
+                        "EVEN",
+                        null
+                      )}
+                      onCellClick={this.onCellClick}
+                      topMin={undefined}
+                      topMax={undefined}
+                    />
+                    <td></td>
+                    <ChipComponent
+                      currentItemChips={currentItemChips_red}
+                      tdKey={"td_other_red"}
+                      chipKey={"chip_other_red"}
+                      cell={this.other_red}
+                      rowSpan={1}
+                      colSpan={3}
+                      leftMin={30}
+                      leftMax={60}
+                      cellClass={this.getClassNamesFromCellItemType(
+                        "RED",
+                        null
+                      )}
+                      onCellClick={this.onCellClick}
+                      topMin={undefined}
+                      topMax={undefined}
+                    />
+                    <td></td>
+                    <ChipComponent
+                      currentItemChips={currentItemChips_black}
+                      tdKey={"td_other_black"}
+                      chipKey={"chip_other_black"}
+                      cell={this.other_black}
+                      rowSpan={1}
+                      colSpan={3}
+                      leftMin={30}
+                      leftMax={60}
+                      cellClass={this.getClassNamesFromCellItemType(
+                        "BLACK",
+                        null
+                      )}
+                      onCellClick={this.onCellClick}
+                      topMin={undefined}
+                      topMax={undefined}
+                    />
+                    <td></td>
+                    <ChipComponent
+                      currentItemChips={currentItemChips_odd}
+                      tdKey={"td_other_odd"}
+                      chipKey={"chip_other_odd"}
+                      cell={this.other_odd}
+                      rowSpan={1}
+                      colSpan={3}
+                      leftMin={30}
+                      leftMax={60}
+                      cellClass={this.getClassNamesFromCellItemType(
+                        "ODD",
+                        null
+                      )}
+                      onCellClick={this.onCellClick}
+                      topMin={undefined}
+                      topMax={undefined}
+                    />
+                    <td></td>
+                    <ChipComponent
+                      currentItemChips={currentItemChips_19_36}
+                      tdKey={"td_other_19_36"}
+                      chipKey={"chip_other_19_36"}
+                      cell={this.other_19_36}
+                      rowSpan={1}
+                      colSpan={3}
+                      leftMin={30}
+                      leftMax={60}
+                      cellClass={this.getClassNamesFromCellItemType(
+                        "NUMBERS_19_36",
+                        null
+                      )}
+                      onCellClick={this.onCellClick}
+                      topMin={undefined}
+                      topMax={undefined}
+                    />
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 }
