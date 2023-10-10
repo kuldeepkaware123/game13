@@ -1,10 +1,12 @@
 import anime from "animejs";
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { rouletteData, WheelNumber } from "./Global";
 
-
-const Wheel = ( props : {rouletteData : rouletteData, number: WheelNumber}) : JSX.Element => {
+const Wheel = (props: {
+  rouletteData: rouletteData;
+  number: WheelNumber;
+}): JSX.Element => {
   var totalNumbers = 37;
   var singleSpinDuration = 5000;
   var singleRotationDegree = 360 / totalNumbers;
@@ -27,7 +29,10 @@ const Wheel = ( props : {rouletteData : rouletteData, number: WheelNumber}) : JS
 
   // rotateTo randomizes the end outcome of the wheel
   // so it doesn't only end at 0 at the top
-  const getRandomEndRotation = (minNumberOfSpins: number, maxNumberOfSpins: number) => {
+  const getRandomEndRotation = (
+    minNumberOfSpins: number,
+    maxNumberOfSpins: number
+  ) => {
     var rotateTo = anime.random(
       minNumberOfSpins * totalNumbers,
       maxNumberOfSpins * totalNumbers
@@ -50,7 +55,10 @@ const Wheel = ( props : {rouletteData : rouletteData, number: WheelNumber}) : JS
   };
   // randomizing the number of spins that the ball should make
   // so every spin is different
-  const getBallNumberOfRotations = (minNumberOfSpins: number, maxNumberOfSpins: number) => {
+  const getBallNumberOfRotations = (
+    minNumberOfSpins: number,
+    maxNumberOfSpins: number
+  ) => {
     var numberOfSpins = anime.random(minNumberOfSpins, maxNumberOfSpins);
     return 360 * numberOfSpins;
   };
@@ -80,13 +88,13 @@ const Wheel = ( props : {rouletteData : rouletteData, number: WheelNumber}) : JS
     anime.set([".layer-2", ".layer-4"], {
       rotate: function () {
         return lastNumberRotation;
-      }
+      },
     });
     // reset zero
     anime.set(".ball-container", {
       rotate: function () {
         return 0;
-      }
+      },
     });
 
     anime({
@@ -98,7 +106,7 @@ const Wheel = ( props : {rouletteData : rouletteData, number: WheelNumber}) : JS
       easing: `cubicBezier(${bezier.join(",")})`,
       complete: function (anim: any) {
         lastNumber = currentNumber;
-      }
+      },
     });
     // aniamte ball
     anime({
@@ -107,21 +115,35 @@ const Wheel = ( props : {rouletteData : rouletteData, number: WheelNumber}) : JS
         { value: 0, duration: 2000 },
         { value: 20, duration: 1000 },
         { value: 25, duration: 900 },
-        { value: 50, duration: 1000 }
+        { value: 50, duration: 1000 },
       ],
       rotate: [{ value: ballEndRotation, duration: singleSpinDuration }],
       loop: 1,
-      easing: `cubicBezier(${bezier.join(",")})`
+      easing: `cubicBezier(${bezier.join(",")})`,
     });
   }
+  const [currentNumber, setCurrentNumber] = useState<number | null>(null);
+  const [isSpinning, setIsSpinning] = useState<boolean>(false);
+
+  const startSpin = () => {
+    setIsSpinning(true);
+
+    // Generate a random number to simulate a new spin
+    const randomNextNumber = Math.floor(Math.random() * totalNumbers) + 1;
+    setCurrentNumber(randomNextNumber);
+    spinWheel(randomNextNumber);
+
+    // Stop the spin after one minute (60000 milliseconds)
+    setTimeout(() => {
+      setIsSpinning(false);
+    }, 60000);
+  };
 
   useEffect(() => {
-    var nextNubmer = props.number.next;
-    if (nextNubmer != null && nextNubmer !== "") {
-      var nextNumberInt = parseInt(nextNubmer);
-      spinWheel(nextNumberInt);
+    if (!isSpinning) {
+      startSpin();
     }
-  }, [props.number]);
+  }, [isSpinning]);
 
   return (
     <div className={"roulette-wheel"}>
@@ -141,9 +163,6 @@ const Wheel = ( props : {rouletteData : rouletteData, number: WheelNumber}) : JS
           style={{ transform: "translate(0, -163.221px)" }}
         ></div>
       </div>
-      {/* <svg width="380" height="380">
-        <circle cx="190" cy="190" r="190" style={{touch-action: 'none'}}></circle>
-      </svg> */}
     </div>
   );
 };

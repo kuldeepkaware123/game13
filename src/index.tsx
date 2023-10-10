@@ -1,8 +1,8 @@
-import { StrictMode } from 'react';
-import ReactDOM from 'react-dom';
-import App from './app'; // Import the App component without the ".js" extension
+import { StrictMode } from "react";
+import ReactDOM from "react-dom";
+import App from "./app"; // Import the App component without the ".js" extension
 
-const rootElement = document.getElementById('app');
+const rootElement = document.getElementById("app");
 
 ReactDOM.render(
   <StrictMode>

@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import Wheel from "./Wheel";
 import Board from "./Board";
-import { Col, Progress } from "@mantine/core";
-import Swal from "sweetalert2";
+import Slider from "react-slick";
+import { List, Button, Progress } from "@mantine/core";
+import { FaArrowLeft, FaArrowCircleLeft, FaInfoCircle } from "react-icons/fa";
 
 const RouletteWrapper = () => {
+  const [chipNum, setChipNum] = useState<number | undefined>(undefined); // Specify the type as number | undefined
+
+  const settings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+  const onChipClick = (chipNum: number) => {
+    setChipNum(chipNum);
+    alert(`You have added ${chipNum}`);
+  };
+
   const dummyData = {
     rouletteData: {
       numbers: [
@@ -13,7 +27,7 @@ const RouletteWrapper = () => {
       ],
     },
     number: {
-      next: 25,
+      next: 10,
     },
     winners: [
       { username: "User1", sum: 100 },
@@ -28,50 +42,96 @@ const RouletteWrapper = () => {
   return (
     <div>
       <div>
-        <table className={"rouletteWheelWrapper"}>
+        <table className="rouletteWheelWrapper table-responsive">
           <tr className="topbar">
-            <td className="fs-2"> ⬅ </td>
+            <td className="fs-2 align-middle text-white topicon">
+              <FaArrowCircleLeft />
+            </td>
             <td>
-              <button className="btn btn-primary">
+              <button className="btn ">
                 USER ID :- <span className="text-success">1234</span>
               </button>
             </td>
             <td>
-              <button className="btn btn-primary">
+              <button className="btn ">
                 POINT :- <span className="text-primary">1234</span>
               </button>
             </td>
             <td>
-              <button className="btn btn-primary">
+              <button className="btn ">
                 WIN :- <span className="text-success">1234</span>
               </button>
             </td>
             <td>
-              <button className="btn btn-primary">
+              <button className="btn ">
                 DATE :- <span>1/3/23</span>
               </button>
             </td>
             <td>
-              <button className="btn btn-primary">
+              <button className="btn ">
                 TIME :- <span>02:00</span>
               </button>
             </td>
-            <td className="fs-2"> ℹ️ </td>
+            <td className="fs-2 text-white topicon">
+              <FaInfoCircle />
+            </td>
           </tr>
           <tr className="topbar">
             <td colSpan={3}>
               <div className="mb-3">
-                <button className="btn btn-primary">
+                <button className="btn ">
                   <span> 01 : 00</span>
                 </button>
               </div>
 
+              <Slider {...settings}>
+                <div className="roulette-actions">
+                  <ul>
+                    <li className={"board-chip"}>
+                      <div
+                        className="chip-100"
+                        onClick={() => onChipClick(100)}
+                      >
+                        100
+                      </div>
+                    </li>
+                    <li className={"board-chip"}>
+                      <span>
+                        <div
+                          className="chip-20"
+                          onClick={() => onChipClick(20)}
+                        >
+                          20
+                        </div>
+                      </span>
+                    </li>
+                    <li className={"board-chip"}>
+                      <span>
+                        <div
+                          className="chip-10"
+                          onClick={() => onChipClick(10)}
+                        >
+                          10
+                        </div>
+                      </span>
+                    </li>
+                    <li className={"board-chip"}>
+                      <span>
+                        <div className="chip-5" onClick={() => onChipClick(5)}>
+                          5
+                        </div>
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </Slider>
+
               <div>
-                <button className="btn btn-primary">
+                <button className="btn btn2">
                   <span>SPECIFIC CANCEL</span>
                 </button>
 
-                <button className="btn btn-primary">
+                <button className="btn btn2">
                   <span>CENCEL BET</span>
                 </button>
               </div>
@@ -84,7 +144,7 @@ const RouletteWrapper = () => {
             </td>
             <td colSpan={3}>
               <div className="mb-3 text-end">
-                <button className="btn btn-primary w-75">
+                <button className="btn  w-75 text-start">
                   {dummyData.history &&
                     dummyData.history.map((entry, index) => (
                       <span
@@ -103,13 +163,18 @@ const RouletteWrapper = () => {
                     ))}
                 </button>
               </div>
+              <div className="mb-3 text-end">
+                <button className="btn btn2">
+                  <span>TAKE</span>
+                </button>
+              </div>
 
               <div className="text-end">
-                <button className="btn btn-primary">
+                <button className="btn btn2">
                   <span>PREVIOUS BET</span>
                 </button>
 
-                <button className="btn btn-primary">
+                <button className="btn btn2">
                   <span>BET OK</span>
                 </button>
               </div>

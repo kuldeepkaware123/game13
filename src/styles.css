@@ -167,7 +167,7 @@ ul {
 
 ul li.board-chip {
   list-style: none;
-  margin: 0 15px;
+  margin: 0 10px;
   display: block;
 }
 
@@ -234,6 +234,9 @@ ul li.board-chip div.chip-5 {
   background: url("assets/chip_purple.png") no-repeat;
   background-size: 60px 60px;
 }
+td {
+  vertical-align: middle !important;
+}
 
 div.chip-100-placed {
   background: url("assets/chip_black.png") no-repeat;
@@ -252,8 +255,7 @@ div.chip-5-placed {
   background-size: 30px 30px;
 }
 .roulette-actions {
-  display: block;
-  position: relative;
+  display: flex;
   height: 150px;
 }
 .chipValue {
@@ -309,6 +311,10 @@ div.chip-5-placed {
   margin: 0 auto;
   width: 90%;
 }
+
+.chip_img {
+  height: 70px;
+}
 .winnerHistory {
   vertical-align: top;
   width: 400px;
@@ -316,6 +322,9 @@ div.chip-5-placed {
 .winnersBoard {
   vertical-align: top;
   width: 400px;
+}
+.slick-list {
+  margin-left: -150px;
 }
 
 .winnerHistory .red {
@@ -332,6 +341,9 @@ div.chip-5-placed {
 }
 .winnerHistory {
 }
+.topicon {
+  cursor: pointer;
+}
 .winnerHistory div {
   float: left;
   color: #fff;
@@ -344,36 +356,37 @@ div.chip-5-placed {
   margin-bottom: 10px;
 }
 
-.hideElementsTest {
-  /* visibility: hidden;*/
-}
-
 .topbar td button,
 .topbar div button {
-  margin: 0px 10px;
+  margin: 15px 10px 0px 10px;
   height: 3em;
-  width: 10em;
+  width: 11em;
   border-radius: 1em;
-
   font-size: 1em;
   font-weight: bold;
   color: #333;
-
-  /* padding defines the width of the red gradient background (2) */
   padding: 0.25em;
-
-  /* border-width defines the width the blue gradient background (3) */
+  cursor: pointer;
   border: 0.25em solid transparent;
 
-  background: 
-    /* (1) most inner gradient */ linear-gradient(
-        to bottom,
-        #fff,
-        #bbb
-      )
-      content-box,
-    /* (2) red gradient */ linear-gradient(to right, #e94332, #a91302)
-      padding-box,
-    /* (3) blue gradient */ linear-gradient(to right, #0867a6, #4aa9e8)
-      border-box;
+  background: linear-gradient(to bottom, #fff, #bbb) content-box,
+    linear-gradient(to right, #e94332, #a91302) padding-box;
+  transition: all 0.3s ease; /* Adjust the duration and easing as needed */
+}
+.topbar td button:hover,
+.topbar div button:hover {
+  transform: scale(1.1); /* Example: Scale the button to 110% on hover */
+  background: linear-gradient(to bottom, #eee, #ccc) content-box,
+    linear-gradient(to right, #ff5733, #c82102) padding-box,
+    linear-gradient(to right, #0a76c1, #52b1f1) border-box;
+}
+
+.topbar div .btn2 {
+  background: linear-gradient(to bottom, #f8ab12, #faa906) content-box,
+    linear-gradient(to right, #ff5733, #c82102) padding-box;
+}
+.topbar div .btn2:hover {
+  background: linear-gradient(to bottom, #f8ab12, #faa906) content-box,
+    linear-gradient(to right, #ff5733, #c82102) padding-box,
+    linear-gradient(to right, #0a76c1, #52b1f1) border-box;
 }
