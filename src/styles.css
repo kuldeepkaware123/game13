@@ -23,10 +23,10 @@ body {
   }
 }
 
-#app {
+/* #app {
   contain: layout style;
   overflow: visible;
-}
+} */
 
 .roulette-wheel {
   float: right;
@@ -165,13 +165,13 @@ ul {
   transform: translate(-50%, -50%);
 }
 
-ul li.board-chip {
+.board-chip {
   list-style: none;
   margin: 0 10px;
   display: block;
 }
 
-ul li.board-chip div {
+.board-chip div {
   position: relative;
   display: block;
   width: 60px;
@@ -185,11 +185,10 @@ ul li.board-chip div {
   transition: 0.5s;
 }
 
-ul li div::before {
+div::before {
   content: "";
 }
-
-ul li.board-chip div::before {
+.board-chip div::before {
   content: "";
   position: absolute;
   top: 0;
@@ -203,34 +202,34 @@ ul li.board-chip div::before {
   z-index: -1;
 }
 
-ul li.board-chip div:hover::before {
+.board-chip div:hover::before {
   transform: scale(1.1);
   box-shadow: 0 0 15px #ffee10;
 }
 
-ul li.board-chip div:hover {
+.board-chip div:hover {
   color: #ffee10;
   box-shadow: 0 0 5px #ffee10;
   text-shadow: 0 0 5px #ffee10;
 }
-ul li.board-chip div.chip_selected {
+.board-chip div.chip_selected {
   color: #ffee10;
   box-shadow: 0 0 20px #ffee10;
   text-shadow: 0 0 5px #ffee10;
 }
-ul li.board-chip div.chip-100 {
+.board-chip div.chip-100 {
   background: url("assets/chip_black.png") no-repeat;
   background-size: 60px 60px;
 }
-ul li.board-chip div.chip-20 {
+.board-chip div.chip-20 {
   background: url("assets/chip_blue.png") no-repeat;
   background-size: 60px 60px;
 }
-ul li.board-chip div.chip-10 {
+.board-chip div.chip-10 {
   background: url("assets/chip_orange.png") no-repeat;
   background-size: 60px 60px;
 }
-ul li.board-chip div.chip-5 {
+.board-chip div.chip-5 {
   background: url("assets/chip_purple.png") no-repeat;
   background-size: 60px 60px;
 }
@@ -323,9 +322,6 @@ div.chip-5-placed {
   vertical-align: top;
   width: 400px;
 }
-.slick-list {
-  margin-left: -150px;
-}
 
 .winnerHistory .red {
   text-align: center;
@@ -341,9 +337,19 @@ div.chip-5-placed {
 }
 .winnerHistory {
 }
+
+.secondsection .leftbar,
+.secondsection .rightbar {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+}
 .topicon {
   cursor: pointer;
+  padding-top: 10px;
 }
+
 .winnerHistory div {
   float: left;
   color: #fff;

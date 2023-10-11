@@ -1,0 +1,82 @@
+.custom-slider-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-slider {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  justify-content: center;
+}
+
+.slider-item {
+  flex: 0 0 35.33%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.5;
+  transition: transform 0.3s; /* Add a transition property for the sliding effect */
+  transform: translateX(0);
+}
+
+.slider-item.center {
+  opacity: 1;
+  transform: translateX(0); /* Keep the center chip in the middle */
+}
+
+.slider-item.notcenter {
+  opacity: 0.5;
+  transform: translateX(-35.33%); /* Slide the previous chip to the left */
+}
+
+.board-chip {
+  text-align: center;
+}
+
+.chip_selected {
+  opacity: 1;
+  color: #ffee10;
+  text-shadow: 0 0 5px #ffee10;
+}
+
+.chip-5,
+.chip-10,
+.chip-20,
+.chip-100 {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chip-5 {
+  background: #ff0000;
+}
+
+.chip-10 {
+  background: #00ff00;
+}
+
+.chip-20 {
+  background: #0000ff;
+}
+
+.chip-100 {
+  background: #ff9900;
+}
+
+.slider-control {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.slider-control.left {
+  transform: rotate(0deg);
+}

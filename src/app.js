@@ -1,10 +1,11 @@
 // app.js
 import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
-import RouletteWrapper from './RouletteWrapper';
+import RouletteWrapper from './RouletteWrapper.jsx';
 import { Button, TextInput } from '@mantine/core';
 import "./styles.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import CustomSlider from "./carousal.jsx";
 
 
 function App() {
@@ -24,7 +25,9 @@ function App() {
     //     );
     // } else {
     return (
-        <RouletteWrapper username={usernameValue} />
+        <>
+            <RouletteWrapper username={usernameValue} />
+        </>
     );
 
 }

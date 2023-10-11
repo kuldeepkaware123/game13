@@ -27,8 +27,6 @@ const Wheel = (props: {
     return singleRotationDegree * index;
   };
 
-  // rotateTo randomizes the end outcome of the wheel
-  // so it doesn't only end at 0 at the top
   const getRandomEndRotation = (
     minNumberOfSpins: number,
     maxNumberOfSpins: number
@@ -40,8 +38,7 @@ const Wheel = (props: {
 
     return singleRotationDegree * rotateTo;
   };
-  // calculating where the zero will be at the end of the spin
-  // because we are spinning it counter clockwise we are substracting it of 360
+
   const getZeroEndRotation = (totalRotaiton: number) => {
     var rotation = 360 - Math.abs(totalRotaiton % 360);
 
